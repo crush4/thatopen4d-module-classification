@@ -1,0 +1,410 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * Classification-Panel — statische Styles.
+ *
+ * Enthält Layout- und Farb-Klassen für Tabelle, Zeilen, Dialoge
+ * (Editor, Import, bSDD-Picker) und Form-Inputs. Alles dynamische
+ * (Hover-States via CSS :hover, statt useState-Flags) lebt hier.
+ *
+ * Klassen-Präfix: `.mod-cls-*` — eng genug, dass keine globalen
+ * Kollisionen entstehen, kurz genug für den Panel-Scope.
+ * ─────────────────────────────────────────────────────────────── */
+
+/* ── Tabellen-Grid ─────────────────────────────────────────────── */
+
+.mod-cls-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr 140px 120px 120px 90px;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mod-cls-table-header {
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid var(--bim-ui_bg-contrast-40);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--bim-ui_bg-contrast-60);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--bim-ui_bg-base) 97%, transparent);
+}
+
+.mod-cls-row {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--bim-ui_bg-contrast-20);
+  background: transparent;
+  transition: background 0.1s;
+}
+
+.mod-cls-row:hover {
+  /* Kein RGB-Token vorhanden — bewusst hartcodierter semi-transparenter Wert */
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mod-cls-col-right {
+  text-align: right;
+}
+
+/* ── Zellen ──────────────────────────────────────────────────── */
+
+.mod-cls-cell-code {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-family: ui-monospace, monospace;
+  color: var(--bim-ui_bg-contrast-100);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-cls-cell-indent {
+  margin-right: 6px;
+  color: var(--bim-ui_bg-contrast-40);
+}
+
+.mod-cls-cell-label {
+  font-size: 0.76rem;
+  color: var(--bim-ui_bg-contrast-100);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-cls-cell-meta {
+  font-size: 0.7rem;
+  color: var(--bim-ui_bg-contrast-60);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.mod-cls-cell-meta-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-cls-cell-bsdd-link {
+  /* Kein Info/Blau-Token im System — #3b82f6 bleibt als semantisch korrekter Link-Blauton;
+     --bim-ui_main-base (Orange) wäre semantisch falsch für einen Hyperlink */
+  color: #3b82f6;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mod-cls-cell-meta-empty {
+  color: var(--bim-ui_bg-contrast-40);
+}
+
+.mod-cls-cell-created {
+  font-size: 0.66rem;
+  color: var(--bim-ui_bg-contrast-60);
+}
+
+.mod-cls-cell-kind {
+  font-size: 0.66rem;
+  color: var(--bim-ui_bg-contrast-60);
+}
+
+.mod-cls-row-actions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+/* ── Dialoge (Editor, Import, bSDD-Picker) ───────────────────── */
+
+.mod-cls-dialog {
+  padding: 0;
+  border: 1px solid var(--bim-ui_bg-contrast-40);
+  border-radius: 8px;
+  background: var(--bim-ui_bg-contrast-10);
+  color: var(--bim-ui_bg-contrast-100);
+  min-width: 420px;
+  max-width: 560px;
+}
+
+.mod-cls-dialog--wide {
+  min-width: 480px;
+  max-height: 80vh;
+}
+
+.mod-cls-dialog--bsdd {
+  min-width: 480px;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001; /* liegt über dem ClassEditorDialog */
+}
+
+.mod-cls-dialog-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bim-ui_bg-contrast-20);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: move;
+  user-select: none;
+}
+
+.mod-cls-dialog-header-icon {
+  font-size: 1rem;
+  color: var(--bim-ui_main-base, #f97316);
+}
+
+.mod-cls-dialog-header-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.mod-cls-dialog-header-spacer {
+  flex: 1;
+}
+
+.mod-cls-dialog-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mod-cls-dialog-footer {
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--bim-ui_bg-contrast-20);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mod-cls-close-btn {
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: none;
+  color: var(--bim-ui_bg-contrast-60);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* ── Form-Elemente (inline in den Dialogen) ──────────────────── */
+
+.mod-cls-input {
+  padding: 0.35rem 0.6rem;
+  background: var(--bim-ui_bg-contrast-20);
+  border: 1px solid var(--bim-ui_bg-contrast-40);
+  border-radius: 4px;
+  color: var(--bim-ui_bg-contrast-100);
+  font-size: 0.75rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.mod-cls-select {
+  padding: 0.35rem 0.6rem;
+  background: var(--bim-ui_bg-contrast-20);
+  border: 1px solid var(--bim-ui_bg-contrast-40);
+  border-radius: 4px;
+  color: var(--bim-ui_bg-contrast-80);
+  font-size: 0.72rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.mod-cls-btn-primary {
+  padding: 0.4rem 1rem;
+  background: var(--bim-ui_main-base, #f97316);
+  border: 1px solid var(--bim-ui_main-base, #f97316);
+  color: #fff; /* bewusst konstant: Text auf Primary-Background */
+  font-weight: 600;
+  font-size: 0.75rem;
+  font-family: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mod-cls-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mod-cls-btn-secondary {
+  padding: 0.4rem 1rem;
+  background: var(--bim-ui_bg-contrast-20);
+  border: 1px solid var(--bim-ui_bg-contrast-40);
+  color: var(--bim-ui_bg-contrast-80);
+  font-size: 0.75rem;
+  font-family: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mod-cls-btn-secondary--compact {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.68rem;
+}
+
+.mod-cls-btn-bsdd {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.68rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Field-Row-Container (das eigentliche Field kommt jetzt aus
+   platform `<Field>` / .ui-field — siehe primitives.css) ──── */
+
+.mod-cls-field-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ── Toolbar-Info (Counter rechts neben Search) ─────────────── */
+
+.mod-cls-toolbar-counter {
+  font-size: 0.62rem;
+  color: var(--bim-ui_bg-contrast-60);
+  white-space: nowrap;
+}
+
+/* ── Panel-Body Pad-Info (Lade/Error/Hinweis) ─────────────── */
+
+.mod-cls-pad-info {
+  padding: 1rem;
+  font-size: 0.75rem;
+  color: var(--bim-ui_bg-contrast-60);
+}
+
+.mod-cls-pad-info--error {
+  color: var(--accent-red, #ef4444);
+}
+
+.mod-cls-pad-info--center {
+  text-align: center;
+}
+
+.mod-cls-pad-info--faded {
+  color: var(--bim-ui_bg-contrast-40);
+}
+
+/* ── Import-Dialog: Counter-Zeile + Checkbox-Items ───────── */
+
+.mod-cls-import-toolbar {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bim-ui_bg-contrast-20);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mod-cls-import-counter {
+  font-size: 0.68rem;
+  color: var(--bim-ui_bg-contrast-60);
+}
+
+.mod-cls-import-list {
+  max-height: 50vh;
+  overflow: auto;
+  padding: 0.25rem 0;
+}
+
+.mod-cls-import-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--bim-ui_bg-contrast-100);
+}
+
+.mod-cls-import-item-ifc {
+  font-family: ui-monospace, monospace;
+  color: var(--bim-ui_bg-contrast-80);
+  min-width: 180px;
+}
+
+.mod-cls-import-item-mapped {
+  color: var(--bim-ui_bg-contrast-60);
+}
+
+/* ── bSDD-Picker: Suchfeld, Ergebnis-Liste, Result-Row ────── */
+
+.mod-cls-bsdd-search {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bim-ui_bg-contrast-20);
+}
+
+.mod-cls-bsdd-search-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mod-cls-bsdd-search-error {
+  margin-top: 6px;
+  font-size: 0.68rem;
+  color: var(--accent-red, #ef4444);
+}
+
+.mod-cls-bsdd-results {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 120px;
+  max-height: 380px;
+}
+
+.mod-cls-bsdd-result-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 1px solid var(--bim-ui_bg-contrast-20);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+
+.mod-cls-bsdd-result-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mod-cls-bsdd-result-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--bim-ui_bg-contrast-100);
+}
+
+.mod-cls-bsdd-result-ifc {
+  margin-left: 8px;
+  font-size: 0.66rem;
+  font-weight: 400;
+  font-family: ui-monospace, monospace;
+  color: var(--bim-ui_bg-contrast-60);
+}
+
+.mod-cls-bsdd-result-uri {
+  font-size: 0.62rem;
+  color: var(--bim-ui_bg-contrast-40);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ActionBtn- und EmptyState-Klassen entfernt — Konsum jetzt aus
+   `@thatopen4d/platform` (ui-action-btn + ui-empty-state). */

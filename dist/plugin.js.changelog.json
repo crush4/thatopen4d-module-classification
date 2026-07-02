@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "pluginId": "thatopen4d-classification",
+  "generatedAt": "2026-07-02T00:17:19.990Z",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-06-22T12:00:00.000Z",
+      "entries": [
+        {
+          "id": "initial-extract",
+          "type": "feature",
+          "title": "Initial Extract aus dem ThatOpen4D-Hauptrepo (v1.0.0)",
+          "body": "Erstes eigenstaendiges Release als Stage-1-Core-Plugin. Frueher unter\n`packages/module-classification/` im Hauptrepo. Panel-lokale Hierarchie\nvon Twin-Klassen (IfcWall -> Klassen-Typ) mit optionaler bSDD-Verknuepfung\nund Import aus geladenen Modellen. Kein Cross-Modul-Vertrag.\n\n**Mindest-Host-Version** `^1.5.1` — braucht die SDK-Erweiterungen fuer\n`formatIfcEntityName`, `TwinClassRow`, `openCentered` und `formatDateTime`.",
+          "audience": [
+            "developer"
+          ],
+          "breaking": false
+        }
+      ]
+    }
+  ]
+}

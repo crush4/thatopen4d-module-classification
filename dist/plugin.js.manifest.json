@@ -1,0 +1,17 @@
+{
+  "id": "thatopen4d-classification",
+  "displayName": "Klassifikation",
+  "version": "1.0.0",
+  "engines": {
+    "host": "^1.5.1"
+  },
+  "contributes": {
+    "panels": [
+      {
+        "panelId": "classification",
+        "title": "Klassifikation",
+        "icon": "mdi:tag-multiple-outline"
+      }
+    ]
+  }
+}
