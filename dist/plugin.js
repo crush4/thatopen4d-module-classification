@@ -9,7 +9,7 @@ import { formatIfcEntityName as Q, SchemaRegistry as ie, ClassRegistry as ce, En
 import { listTwinClasses as re, updateTwinClass as de, createTwinClass as me, deleteTwinClass as ue, importTwinClasses as he } from "@thatopen4d/api-clients/twin-classes";
 import { searchBsdd as pe } from "@thatopen4d/api-clients/bsdd";
 import { ApiError as be } from "@thatopen4d/api-clients/client";
-const fe = { id: "thatopen4d-classification", displayName: "Klassifikation", version: "1.0.0", engines: { host: "^1.5.1" } }, ge = {
+const fe = { id: "thatopen4d-classification", displayName: "Klassifikation", version: "1.0.1", engines: { host: "^1.5.1" } }, ge = {
   thatopen4d: fe
 };
 async function ve(e, n = 20) {
